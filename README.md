@@ -1,2 +1,2 @@
 # ArUco_detection
-## ArUco used in ROS-Gazeno
+## ArUco used in ROS-Gazebo
