@@ -12,7 +12,7 @@ def callback(img):
     bridge = CvBridge()
     try:
         cv_image = bridge.imgmsg_to_cv2(img, "bgr8")
-    except CvBridgeError, e:
+    except CvBridgeError as e:
         rospy.logerr("CvBridge Error: {0}".format(e))
     Detected_ArUco_markers = detect_ArUco(cv_image)	                                ## detecting ArUco ids and returning ArUco dictionary
     img = mark_ArUco(cv_image,Detected_ArUco_markers)                         ## marking the parameters of aruco which will help sherlock to solve maze
@@ -22,7 +22,7 @@ def callback(img):
     
 
 def laser():
-    rospy.Subscriber('/camera/rgb/image_raw', Image, callback)
+    rospy.Subscriber('/turtlebot3_waffle_pi/camera/image_raw', Image, callback)
     rospy.spin()
 
 
