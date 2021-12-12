@@ -160,6 +160,53 @@ if __name__ == '__main__':
 ```
 Run ```roslaunch aruco_detection turtlebot3_teleop_key.launch``` in another window, and try to move the bot.
 
-Now, we have seen 
-## Let's Solve MaZe
+Now, we have seen ArUco detection,
+
+# Let's Solve mAzE
+
 At this stage, you have enough knowledge to escape from the maze created by Moriarty.
+
+Open **maze_aruco.launch** file in launch folder and replace empty.world with maze_aruco.world. Required file is
+
+```xml
+<launch>
+
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="world_name" value="$(find aruco_detection)/worlds/maze_aruco.world"/>
+    <arg name="paused" value="false"/>
+    <arg name="use_sim_time" value="true"/>
+    <arg name="gui" value="true"/>
+    <arg name="headless" value="false"/>
+    <arg name="debug" value="false"/>
+  </include>
+
+</launch>
+```
+Execute following command 
+```
+roslaunch aruco_detection maze_aruco.launch
+roslaunch aruco_detection spawn_turtlebot3.launch
+```
+Upon execution, the following screen should be visible.
+## add image 
+Cool !
+
+How will you come out of this maze, which is surrounded by walls from all the sides ?
+
+Well, it's Moriarty's maze.
+
+There is a trick- Bot can go through some of the walls present in the maze. But, how bot will found those walls ? 
+
+ArUco says hi!! 
+
+AruCo will guide you along the way to solve the maze. 
+
+## add image 
+
+*Blue line* in ArUco marker in "Image Window" is indicating that magic wall 
+
+Execute ```rosrun aruco_detection detect_marker.py```. Open new terminal and execute ```roslaunch aruco_detection turtlebot3_teleop_key.launch``` to control bot.
+Now, go and Solve the maze. :)
+
+## add meme moriarty's maze sloved by sherlock , moriarty defeat
+
