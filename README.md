@@ -62,7 +62,8 @@ rosrun aruco_detection detect_marker.py
 On executing You should be able to see following screen.
 
 Have a look at the detect_marker.py file
-```
+
+```python
 #!/usr/bin/env python3
 
 from sensor_msgs.msg import Image
@@ -153,8 +154,9 @@ if __name__ == '__main__':
 
     except rospy.ROSInterruptException:
         pass
-### add image ###
+	
 ```
+### add image ###
 Run ```roslaunch aruco_detection turtlebot3_teleop_key.launch``` in another window, and try to move the bot.
 
 Now, we have seen 
