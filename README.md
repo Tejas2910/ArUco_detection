@@ -208,5 +208,5 @@ AruCo will guide you along the way to solve the maze.
 Execute ```rosrun aruco_detection detect_marker.py```. Open new terminal and execute ```roslaunch aruco_detection turtlebot3_teleop_key.launch``` to control bot.
 Now, go and Solve the maze. :)
 
-## add meme moriarty's maze sloved by sherlock , moriarty defeat
+## add meme moriarty's maze solved by sherlock , moriarty defeat
 
