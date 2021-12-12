@@ -12,7 +12,7 @@ Now you have a package aruco_detection, let's run it.
 roslaunch aruco_detection maze_aruco.launch
 ```
 Let's spwan the Turtlebot3 by running follwing command in another tab
-```
+```bash
 roslaunch aruco_detection spawn_turtlebot3.launch
 ```
 You can see ArUco marker in front of TurtleBot3(waffle_pi model).
@@ -56,7 +56,7 @@ Run ```rviz``` in Terminal. Click on Add button, Under tab **By topic** add ```/
 Now, we will subscribe ```/turtlebot3_waffle_pi/camera/image_raw``` topic to convert ROS Image data to OpenCV Image data using **cv_bridge**.
 
 Execute the following command in another tab.
-```
+```bash
 rosrun aruco_detection detect_marker.py
 ```
 On executing You should be able to see following screen.
@@ -183,7 +183,7 @@ Open **maze_aruco.launch** file in launch folder and replace empty.world with ma
 </launch>
 ```
 Execute following command 
-```
+```bash
 roslaunch aruco_detection maze_aruco.launch
 roslaunch aruco_detection spawn_turtlebot3.launch
 ```
