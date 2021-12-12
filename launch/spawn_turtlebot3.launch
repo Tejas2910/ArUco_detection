@@ -5,7 +5,7 @@
     
     <param name="robot_description" command="$(find xacro)/xacro $(find aruco_detection)/urdf/turtlebot3_$(arg model).urdf.xacro" />
     
-    <arg name="x_pos" default="0.5"/>
+    <arg name="x_pos" default="0"/>
     <arg name="y_pos" default="0"/>
     <arg name="z_pos" default="0.5"/>
 
