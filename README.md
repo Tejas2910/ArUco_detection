@@ -60,6 +60,7 @@ Execute the following command in another tab.
 rosrun aruco_detection detect_marker.py
 ```
 On executing You should be able to see following screen.
+### add image ###
 
 Have a look at the detect_marker.py file
 
@@ -157,7 +158,6 @@ if __name__ == '__main__':
         pass
 	
 ```
-### add image ###
 Run ```roslaunch aruco_detection turtlebot3_teleop_key.launch``` in another window, and try to move the bot.
 
 Now, we have seen 
