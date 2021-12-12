@@ -1,14 +1,14 @@
 ## Proceeding to detect ArUco..
 
 Open the Terminal and run following commands-
-```
+```bash
 cd ~/catkin_ws/src
 git clone https://github.com/Tejas2910/aruco_detection/tree/python3_noetic
 cd ~/catkin_ws
 catkin_make
 ```
 Now you have a package aruco_detection, let's run it.
-```
+```bash
 roslaunch aruco_detection maze_aruco.launch
 ```
 Let's spwan the Turtlebot3 by running follwing command in another tab
