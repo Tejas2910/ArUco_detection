@@ -79,12 +79,11 @@ import time
 def detect_ArUco(img):
 	## function to detect ArUco markers in the image using ArUco library
 	## argument: img is the test image
-	## return: dictionary named Detected_ArUco_markers of the format {ArUco_id_no : corners}, where ArUco_id_no indicates ArUco id and corners indicates the four corner position of the aruco(numpy array)
-	## 		   for instance, if there is an ArUco(0) in some orientation then, ArUco_list can be like
-	## 				{0: array([[315, 163],
-	#							[319, 263],
-	#							[219, 267],
-	#							[215,167]], dtype=float32)}
+	## return:   dictionary named Detected_ArUco_markers of the format {ArUco_id_no : corners},
+	## 	     where ArUco_id_no indicates ArUco id and corners indicates the four corner position of the aruco(numpy array)
+	##	     for instance, if there is an ArUco(0) in some orientation then, ArUco_list can be like
+	## 				{0: array([[315, 163], [319, 263], [219, 267], [215,167]], dtype=float32)}
+						
     Detected_ArUco_markers = {}
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
     aruco_dict = aruco.Dictionary_get(aruco.DICT_5X5_250)
