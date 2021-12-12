@@ -49,8 +49,11 @@ Yes, you guessed correctly. Let's check by executing ``` rostopic list ``` in an
 /turtlebot3_waffle_pi/camera/parameter_descriptions
 /turtlebot3_waffle_pi/camera/parameter_updates
 ```
-Camera Sensor is publishing data of ```sensor_msgs/Image``` msg type to ```/turtlebot3_waffle_pi/camera/image_raw``` topic. Let's visulise this data throgh 
+Camera Sensor is publishing data of ```sensor_msgs/Image``` msg type to ```/turtlebot3_waffle_pi/camera/image_raw``` topic. Let's visualize this data throgh **Rviz**.
 
+Run ```rviz``` in Terminal. Click on Add button, Under tab **By topic** add ```/turtlebot3_waffle_pi/camera/image_raw``` topic. You can see data published on this topic.  
+
+Now, we will subscribe this topic to convert ROS Image data to OpenCV Image data using cv_bridge.
 
 ## Let's Solve MaZe
 At this stage, you have enough knowledge to escape from the maze created by Moriarty.
