@@ -35,32 +35,7 @@ def detect_ArUco(img):
     i += 1
     return Detected_ArUco_markers
 
-
-# def mark_ArUco(img,Detected_ArUco_markers):
-# 	## function to mark ArUco in the test image as per the instructions given in problem statement
-# 	## arguments: img is the test image 
-# 	##			  Detected_ArUco_markers is the dictionary returned by function detect_ArUco(img)
-# 	## return: image helping sherlock to solve maze 
-
-#     ids = Detected_ArUco_markers.keys()
-#     print(Detected_ArUco_markers)
-#     centre_aruco = {}
-#     top_centre = {}
-
-#     try:
-#         for id in ids:
-#             corners = Detected_ArUco_markers[id]
-#             for i in range(0, 4):
-#                 cv2.circle(img,(int(corners[i][0]), int(corners[i][1])), 5, (0,0,255), -1)
-#             centre_aruco[id] = (corners[0]+corners[1]+corners[2]+corners[3])/4
-#             top_centre[id] = (corners[0]+corners[1])/2
-#             cv2.line(img, (int(centre_aruco[id][0]), int(centre_aruco[id][1])), (int(top_centre[id][0]), int(top_centre[id][1])), (255, 0, 0), 5)
-
-#     except TypeError:
-#         print("No aruco in front of me")
-
-    return img
-
+#### Output : modified image, ArUco indicating direction
 def mark_ArUco(img, Detected_ArUco_markers):
     ids = Detected_ArUco_markers.keys()
     centre_aruco = {}

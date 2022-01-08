@@ -29,7 +29,6 @@ class AutoNavigator:
         self.direction = "left"
 
     def scan_callback(self, msg):
-        # This message has indices based on the angle relative to front of robot
         allranges = msg.ranges
         frontal = allranges[0:5] + allranges[-1:-5:-1]
         rightside = allranges[300:345]
@@ -40,101 +39,60 @@ class AutoNavigator:
         self.min_range = min(self.min_left,self.min_front,self.min_right)
 
     def detect_callback(self, img):
-        bridge = CvBridge()
-        try:
-            cv_image = bridge.imgmsg_to_cv2(img, "bgr8")
-        except CvBridgeError as e:
-            rospy.logerr("CvBridge Error: {0}".format(e))
-        Detected_ArUco_markers = detect_ArUco(cv_image)	                               
-        img, self.turn = mark_ArUco(cv_image,Detected_ArUco_markers)  
-        #self.turn = give_direction(Detected_ArUco_markers)
-        if self.turn == "left":
-            self.direction = "left"
-        elif self.turn == "right":
-            self.direction = "right"
-        print(self.direction)
-        cv2.namedWindow("Image Window", 1)
-        cv2.imshow("Image Window", img)
-        k = cv2.waitKey(1)
+        pass
+        #####################################
+        ## Here, you have to detect ArUcos and 
+        ## mark the ArUco with notations, 
+        ## similar to the one done in week and then display it.
+        ## Line joining centre and top_centre must be displayed.
+        ## Input: Image data detected by camera sensor
+        ## Output : Display marked ArUcos 
+        ####################################                             
+        
+        # img, self.turn = mark_ArUco(cv_image,Detected_ArUco_markers)  
+
+        # if self.turn == "left":
+        #     self.direction = "left"
+        # elif self.turn == "right":
+        #     self.direction = "right"
+
 
     def run(self):
         while not rospy.is_shutdown():
-            if self.direction == "right":
-                self.left_wall_follow()
-            else:
-                self.right_wall_follow()
+            pass
+            ############################
+            ##If ArUco shows left deirection 
+            ## follow right hand side wall. 
+            ## If ArUco shows right direction 
+            ## follow left hand side wall.
+
+            ## IMP 
+            ## You may turn robot to right side even, 
+            ## if ArUco is detecting left direction and viceversa.
+            ##############################
+            # if self.direction == "right":
+            #     ######
+            # else:
+            #     ######
 
     def left_wall_follow(self):
+        ###############################
+        ## Follow left hand side wall of robot. 
+        ## You can take help from navigator.py file of week3.
+        ## You may need to change various values 
+        ## form that file to get correct results.
+        #################################
         print("follow left walll")
-        if self.near_wall==False and not rospy.is_shutdown():
-            print("Moving to wall")
-            if self.min_range > 0.2:
-                self.command.angular.z = 0.0
-                self.command.linear.x = 0.15
-            elif self.min_left < 0.2:
-                self.near_wall = True
-            else:
-                self.command.angular.z = -0.20
-                self.command.linear.x = 0
-            self.cmd_vel_pub.publish(self.command)
-            self.rate.sleep()
-        else:
-            if (self.min_front > 0.2):
-                if (self.min_left < 0.12):
-                    print("Range: {:.2f}m - Too close. Backing up.".format(self.min_left))
-                    self.command.angular.z = -1.2
-                    self.command.linear.x = 0.0
-                elif self.min_left > 0.15:
-                    print("Range: {:.2f}m - Wall-following; turn left.".format(self.min_left))
-                    self.command.angular.z = 1.0
-                    self.command.linear.x = 0.15
-                else:
-                    print("Range: {:.2f}m - Wall-following; turn right.".format(self.min_left))
-                    self.command.angular.z = -0.1
-                    self.command.linear.x = 0.15
-            else:
-                print("Front obstacle detected. Turning away.")
-                self.command.angular.z = -2.0
-                self.command.linear.x = -0.02
-                self.cmd_vel_pub.publish(self.command)
-            self.cmd_vel_pub.publish(self.command)
-        self.rate.sleep()
+
    
     def right_wall_follow(self):
+        ###############################
+        ## Follow right hand side wall of robot. 
+        ## You can take help from navigator.py file of week3.
+        ## You may need to change various values 
+        ## form that file to get correct results.
+        #################################
         print("follow right wall")
-        if self.near_wall==False and not rospy.is_shutdown():
-            print("Moving to wall")
-            if self.min_range > 0.2:
-                self.command.angular.z = 0.0
-                self.command.linear.x = 0.15
-            elif self.min_right < 0.2:
-                self.near_wall = True
-            else:
-                self.command.angular.z = 0.20
-                self.command.linear.x = 0
-            self.cmd_vel_pub.publish(self.command)
-            self.rate.sleep()
-        else:
-            if (self.min_front > 0.2):
-                if (self.min_right < 0.12):
-                    print("Range: {:.2f}m - Too close. Backing up.".format(self.min_right))
-                    self.command.angular.z = 1.2
-                    self.command.linear.x = 0.0
-                elif self.min_right > 0.15:
-                    print("Range: {:.2f}m - Wall-following; turn right.".format(self.min_right))
-                    self.command.angular.z = -1.0
-                    self.command.linear.x = 0.15
-                else:
-                    print("Range: {:.2f}m - Wall-following; turn left.".format(self.min_right))
-                    self.command.angular.z = 0.1
-                    self.command.linear.x = 0.15
-            else:
-                print("Front obstacle detected. Turning away.")
-                self.command.angular.z = 2.0
-                self.command.linear.x = -0.02
-                self.cmd_vel_pub.publish(self.command)
-            self.cmd_vel_pub.publish(self.command)
-        self.rate.sleep()
 
 
 if __name__=='__main__':
