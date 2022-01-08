@@ -1,7 +1,11 @@
 <launch>
 
   <include file="$(find gazebo_ros)/launch/empty_world.launch">
+<<<<<<< HEAD
     <arg name="world_name" value="$(find aruco_detection)/worlds/maze2.world"/>
+=======
+    <arg name="world_name" value="$(find aruco_detection)/worlds/empty.world"/>
+>>>>>>> 73d9bb0ce0de56f2c004349e2171ba008958fe0e
     <arg name="paused" value="false"/>
     <arg name="use_sim_time" value="true"/>
     <arg name="gui" value="true"/>
